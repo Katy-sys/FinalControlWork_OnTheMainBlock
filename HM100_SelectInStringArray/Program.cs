@@ -29,7 +29,7 @@ string[] ArrayRes(string[] array, int m)
     int count = 0;
     string[] arrayNext = new string[count];
     
-    for (int i = 0; i < array.Count(); i++)
+    for (int i = 0; i < array.Length; i++)
     {
         if (array[i].Length <= m)
         {
