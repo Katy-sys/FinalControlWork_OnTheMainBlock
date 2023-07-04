@@ -8,35 +8,6 @@
 // [“1234”, “1567”, “-2”, “computer science”] → [“-2”]
 // [“Russia”, “Denmark”, “Kazan”] → []
 
-// // Метод получения значения с консоли
-// string GetRows (string message)
-// {
-//     System.Console.WriteLine(message);
-//     string result = System.Console.ReadLine();
-//     return result;
-// }
-
-// //образование нового массива
-// void ReadStringToArray(string[] args)
-// {
-
-// }
-
-// //чтение строки
-
-
-// // 1. Объявление переменных
-// int count = 0; // количество строк
-// string[] ArrayMain = new string[count]; // массив строк
-// int numberRowsInArray; // текущее количество строк в массиве
-// string newRows;
-// string[] ArrayNext; // дополнительный массив - сохраняет старый массив строк
-
-// GetRows("Enter strings:");
-
-
-string[] ArrayMain = { "Sunday", "Monday", "Tuersday",
-      "Wednesday", "Thirsday", "Friday", "Saturday" };
 
 // Метод форматированного вывода на консоль для массива в строку
 void PrintArray(string[] array)
@@ -47,9 +18,41 @@ void PrintArray(string[] array)
     {
         Console.Write($"\"{array[i]}\", ");
     }
-    //Console.ReadKey();
     System.Console.Write($"\"{array[^1]}\"");
     System.Console.WriteLine("]");
 }
 
-PrintArray(ArrayMain);
+// Метод создает массив со строками начального массива, длина которых
+// меньше указанного количества символов.
+string[] ArrayRes(string[] array, int m)
+{
+    int count = 0;
+    string[] arrayNext = new string[count];
+    
+    for (int i = 0; i < array.Count(); i++)
+    {
+        if (array[i].Length <= m)
+        {
+            count++;
+            string[] arrayNew = new string[count];
+            
+            // скопировать старый массив в новый
+            for (int k = 0; k < arrayNew.Length - 1; k++)
+            {
+                arrayNew[k] = arrayNext[k];
+            }
+            // добавить последнюю введенную строку в массив AS2
+            arrayNew[count - 1] = array[i];
+            arrayNext = arrayNew;
+        }
+    }
+    return arrayNext;
+}
+
+// Основная программа 
+string[] arrayMain = { "1234", "Mo", "T", "", "Thirsday", "_Fr", "Sa", "-2" };
+int m = 3;
+PrintArray(arrayMain);
+PrintArray(ArrayRes(arrayMain, m));
+
+
