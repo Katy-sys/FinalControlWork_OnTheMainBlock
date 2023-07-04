@@ -27,7 +27,7 @@ void PrintArray(string[] array)
 string[] ArrayRes(string[] array, int m)
 {
     int count = 0;
-    string[] arrayNext = new string[count];
+    string[] arrayRes = new string[count];
     
     for (int i = 0; i < array.Length; i++)
     {
@@ -39,14 +39,14 @@ string[] ArrayRes(string[] array, int m)
             // скопировать старый массив в новый
             for (int k = 0; k < arrayNew.Length - 1; k++)
             {
-                arrayNew[k] = arrayNext[k];
+                arrayNew[k] = arrayRes[k];
             }
-            // добавить последнюю введенную строку в массив AS2
+            // добавить последнюю введенную строку в новый массив
             arrayNew[count - 1] = array[i];
-            arrayNext = arrayNew;
+            arrayRes = arrayNew;
         }
     }
-    return arrayNext;
+    return arrayRes;
 }
 
 // Основная программа 
